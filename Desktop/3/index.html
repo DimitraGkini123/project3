@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Envelope + Random Letters</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text" id="letterText">
+                        <strong>Dear Person,</strong>
+                        <p>Click the envelope to reveal a surprise!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+
+    <script>
+        const envelopeWrapper = document.querySelector('.envelope-wrapper');
+        const letterText = document.getElementById('letterText');
+
+        // Array of random letters
+        const letters = [
+            `<strong>Dear Love,</strong><p>You are my sunshine on a cloudy day. 🌞</p>`,
+            `<strong>My Dearest,</strong><p>I can't wait to hold you in my arms again. 💕</p>`,
+            `<strong>Hello,</strong><p>Every moment with you is my favorite memory. 🌟</p>`,
+            `<strong>Dear You,</strong><p>You make my heart smile every single day. ❤️</p>`,
+            `<strong>To My Soulmate,</strong><p>Even across the distance, you are always with me. 🥰</p>`,
+            `<strong>Dear Darling,</strong><p>I miss you more than words can describe. 💌</p>`,
+            `<strong>Sweetheart,</strong><p>Thank you for being the best part of my life. 🌷</p>`,
+            `<strong>My Beloved,</strong><p>Distance means so little when someone means so much. ✨</p>`,
+            `<strong>Dear Angel,</strong><p>Your love makes everything brighter. 🌈</p>`,
+            `<strong>To My Heart,</strong><p>You are my forever and always. 🌺</p>`
+        ];
+
+        // Add click event to toggle flap and change letter content
+        envelopeWrapper.addEventListener('click', () => {
+            envelopeWrapper.classList.toggle('flap');
+            if (envelopeWrapper.classList.contains('flap')) {
+                // Change the letter content randomly
+                const randomIndex = Math.floor(Math.random() * letters.length);
+                letterText.innerHTML = letters[randomIndex];
+            }
+        });
+    </script>
+</body>
+</html>
