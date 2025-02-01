@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Envelope + Random Letters</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="letter">
+                    <div class="text" id="letterText">
+                        <strong>Dear Person,</strong>
+                        <p>Click the envelope to reveal a surprise!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+
+    <script>
+        const envelopeWrapper = document.querySelector('.envelope-wrapper');
+        const letterText = document.getElementById('letterText');
+
+        // Array of random letters
+        const letters = [
+            `<strong>Μωρό μου,</strong><p>Καλό ταξίδι. Σου εύχομαι να περάσεις τέλεια και να ζήσεις απίστευτες εμπειρίες. Ανυπομονώ να έρθω και να περάσουμε τέλεια με πολλά πολλά πολλάααα μάκια!</p>`,
+            `<strong>Γειά σου Τόντ!,</strong><p> Ελπίζω να ακούσεις ΟΛΑ τα κουτσομπολιά του σπιτιού από το παραθυράκι σου χεχεχ :) </p>`,
+        ];
+
+        // Add click event to toggle flap and change letter content
+        envelopeWrapper.addEventListener('click', () => {
+            envelopeWrapper.classList.toggle('flap');
+            if (envelopeWrapper.classList.contains('flap')) {
+                // Change the letter content randomly
+                const randomIndex = Math.floor(Math.random() * letters.length);
+                letterText.innerHTML = letters[randomIndex];
+            }
+        });
+    </script>
+</body>
+</html>
